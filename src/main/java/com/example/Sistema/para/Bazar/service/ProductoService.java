@@ -1,29 +1,32 @@
 package com.example.Sistema.para.Bazar.service;
-
 import com.example.Sistema.para.Bazar.model.Producto;
+import com.example.Sistema.para.Bazar.repository.IProductoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProductoService implements IProductoService {
 
+    @Autowired IProductoRepository productoRepo;
+    
     @Override
     public void crearProducto(Producto producto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        productoRepo.saveAndFlush(producto);
     }
 
     @Override
     public void eliminarProducto(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        productoRepo.deleteById(id);
     }
 
     @Override
     public void editarProducto(Producto producto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        productoRepo.saveAndFlush(producto);
     }
 
     @Override
-    public void traerProducto(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Producto traerProducto(Long id) {
+        return productoRepo.findById(id).orElse(null);
     }
     
 }

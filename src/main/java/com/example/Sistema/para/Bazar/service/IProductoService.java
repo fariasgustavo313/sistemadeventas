@@ -1,5 +1,4 @@
 package com.example.Sistema.para.Bazar.service;
-
 import com.example.Sistema.para.Bazar.model.Producto;
 
 public interface IProductoService {
@@ -10,5 +9,5 @@ public interface IProductoService {
     
     public void editarProducto(Producto producto);
     
-    public void traerProducto(Long id);
+    public Producto traerProducto(Long id);
 }
