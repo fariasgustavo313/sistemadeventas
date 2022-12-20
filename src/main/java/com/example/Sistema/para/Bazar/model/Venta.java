@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.Getter;
@@ -22,7 +23,7 @@ public class Venta {
     @OneToMany
     private List<Producto> listaProductos;
     @OneToOne
-    //@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
+    @JoinColumn(name = "un_cliente_id_cliente", referencedColumnName = "id_cliente")
     private Cliente unCliente;
 
     public Venta() {

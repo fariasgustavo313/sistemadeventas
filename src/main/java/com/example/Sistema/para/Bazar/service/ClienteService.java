@@ -1,6 +1,7 @@
 package com.example.Sistema.para.Bazar.service;
 import com.example.Sistema.para.Bazar.model.Cliente;
 import com.example.Sistema.para.Bazar.repository.IClienteRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,11 @@ public class ClienteService implements IClienteService {
     @Override
     public Cliente traerCliente(Long id) {
         return clienteRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Cliente> traerClientes() {
+        return clienteRepo.findAll();
     }
     
 }

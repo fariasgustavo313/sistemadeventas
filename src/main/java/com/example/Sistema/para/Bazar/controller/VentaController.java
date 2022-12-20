@@ -1,6 +1,7 @@
 package com.example.Sistema.para.Bazar.controller;
 import com.example.Sistema.para.Bazar.model.Venta;
 import com.example.Sistema.para.Bazar.service.IVentaService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,26 +17,31 @@ public class VentaController {
     @Autowired
     private IVentaService ventaServ;
     
-    @PostMapping("/venta/crear")
+    @PostMapping("/ventas/crear")
     public String crearVenta(@RequestBody Venta venta) {
         ventaServ.crearVenta(venta);
         return "Venta creada correctamente";
     }
     
-    @DeleteMapping("/venta/eliminar/{id}")
+    @DeleteMapping("/ventas/eliminar/{id}")
     public String eliminarVenta(@PathVariable Long id) {
         ventaServ.eliminarVenta(id);
         return "Venta eliminada correctamente";
     }
     
-    @PutMapping("/venta/editar")
+    @PutMapping("/ventas/editar")
     public String editarVenta(@RequestBody Venta venta) {
         ventaServ.crearVenta(venta);
         return "Venta editada correctamente";
     }
     
-    @GetMapping("/venta/traer/{id}")
+    @GetMapping("/ventas/{id}")
     public Venta traerVenta(@PathVariable Long id) {
         return ventaServ.traerVenta(id);
+    }
+    
+    @GetMapping("/ventas")
+    public List<Venta> traerVentas() {
+        return ventaServ.traerVentas();
     }
 }

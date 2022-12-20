@@ -1,6 +1,7 @@
 package com.example.Sistema.para.Bazar.controller;
 import com.example.Sistema.para.Bazar.model.Cliente;
 import com.example.Sistema.para.Bazar.service.IClienteService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,26 +17,31 @@ public class ClienteController {
     @Autowired
     private IClienteService clienteServ;
     
-    @PostMapping("/cliente/crear")
+    @PostMapping("/clientes/crear")
     public String crearCliente(@RequestBody Cliente cliente) {
         clienteServ.crearCliente(cliente);
         return "Cliente creado correctamente";
     }
     
-    @DeleteMapping("/cliente/eliminar/{id}")
+    @DeleteMapping("/clientes/eliminar/{id}")
     public String eliminarcliente(@PathVariable Long id) {
         clienteServ.eliminarCliente(id);
         return "Cliente eliminado correctamente";
     }
     
-    @PutMapping("/cliente/editar")
+    @PutMapping("/clientes/editar")
     public String editarCliente(@RequestBody Cliente cliente) {
         clienteServ.editarCliente(cliente);
         return "Cliente editado correctamente";
     }
     
-    @GetMapping("/cliente/traer/{id}")
+    @GetMapping("/clientes/{id}")
     public Cliente traerCliente(@PathVariable Long id) {
         return clienteServ.traerCliente(id);
+    }
+    
+    @GetMapping("/clientes")
+    public List<Cliente> traerClientes() {
+        return clienteServ.traerClientes();
     }
 }

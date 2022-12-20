@@ -1,6 +1,7 @@
 package com.example.Sistema.para.Bazar.controller;
 import com.example.Sistema.para.Bazar.model.Producto;
 import com.example.Sistema.para.Bazar.service.IProductoService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,26 +17,36 @@ public class ProductoController {
     @Autowired
     private IProductoService productoServ;
     
-    @PostMapping("/producto/crear")
+    @PostMapping("/productos/crear")
     public String crearProducto(@RequestBody Producto producto) {
         productoServ.crearProducto(producto);
         return "Producto creado correctamente";
     }
     
-    @DeleteMapping("/producto/elimina/{id}")
-    public String eliminarProducto(@PathVariable Long id_producto) {
-        productoServ.eliminarProducto(id_producto);
+    @DeleteMapping("/productos/eliminar/{id}")
+    public String eliminarProducto(@PathVariable Long id) {
+        productoServ.eliminarProducto(id);
         return "Producto eliminado correctamente";
     }
     
-    @PutMapping("/producto/editar")
+    @PutMapping("/productos/editar")
     public String editarProducto(@RequestBody Producto producto) {
         productoServ.crearProducto(producto);
         return "Producto editado correctamente";
     }
     
-    @GetMapping("/producto/traer/{id}")
+    @GetMapping("/productos/{id}")
     public Producto traerProducto(@PathVariable Long id) {
         return productoServ.traerProducto(id);
+    }
+    
+    @GetMapping("/productos")
+    public List<Producto> traerProductos() {
+        return productoServ.traerProductos();
+    }
+    
+    @GetMapping("/productos/falta_stock")
+    public List<Producto> traerProdPocoStock() {
+        return productoServ.traerProdPocoStock();
     }
 }
