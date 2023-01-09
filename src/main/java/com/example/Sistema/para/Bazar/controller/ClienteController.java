@@ -17,29 +17,34 @@ public class ClienteController {
     @Autowired
     private IClienteService clienteServ;
     
+    //Alta a un cliente
     @PostMapping("/clientes/crear")
     public String crearCliente(@RequestBody Cliente cliente) {
         clienteServ.crearCliente(cliente);
         return "Cliente creado correctamente";
     }
     
+    //Baja a un cliente
     @DeleteMapping("/clientes/eliminar/{id}")
     public String eliminarcliente(@PathVariable Long id) {
         clienteServ.eliminarCliente(id);
         return "Cliente eliminado correctamente";
     }
     
+    //Edicion de un cliente
     @PutMapping("/clientes/editar")
     public String editarCliente(@RequestBody Cliente cliente) {
         clienteServ.editarCliente(cliente);
         return "Cliente editado correctamente";
     }
     
+    //Trae a un solo cliente
     @GetMapping("/clientes/{id}")
     public Cliente traerCliente(@PathVariable Long id) {
         return clienteServ.traerCliente(id);
     }
     
+    //Trae la lista de clientes
     @GetMapping("/clientes")
     public List<Cliente> traerClientes() {
         return clienteServ.traerClientes();

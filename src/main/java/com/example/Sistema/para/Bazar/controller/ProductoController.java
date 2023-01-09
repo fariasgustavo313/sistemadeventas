@@ -17,36 +17,44 @@ public class ProductoController {
     @Autowired
     private IProductoService productoServ;
     
+    //Alta a un producto
     @PostMapping("/productos/crear")
     public String crearProducto(@RequestBody Producto producto) {
         productoServ.crearProducto(producto);
         return "Producto creado correctamente";
     }
     
+    //Baja a un producto
     @DeleteMapping("/productos/eliminar/{id}")
     public String eliminarProducto(@PathVariable Long id) {
         productoServ.eliminarProducto(id);
         return "Producto eliminado correctamente";
     }
     
+    //Edicion de un producto
     @PutMapping("/productos/editar")
     public String editarProducto(@RequestBody Producto producto) {
         productoServ.crearProducto(producto);
         return "Producto editado correctamente";
     }
     
+    //Traer a un producto
     @GetMapping("/productos/{id}")
     public Producto traerProducto(@PathVariable Long id) {
         return productoServ.traerProducto(id);
     }
     
+    //Trae la lista de productos
     @GetMapping("/productos")
     public List<Producto> traerProductos() {
         return productoServ.traerProductos();
     }
     
+    //Trae la lista de productos con stock menor a 5
     @GetMapping("/productos/falta_stock")
     public List<Producto> traerProdPocoStock() {
         return productoServ.traerProdPocoStock();
     }
+    
+    
 }

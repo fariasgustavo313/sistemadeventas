@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClienteService implements IClienteService {
 
-    @Autowired IClienteRepository clienteRepo;
+    @Autowired
+    private IClienteRepository clienteRepo;
     
     @Override
     public void crearCliente(Cliente cliente) {

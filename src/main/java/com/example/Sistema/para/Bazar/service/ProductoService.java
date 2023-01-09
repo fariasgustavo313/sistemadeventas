@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductoService implements IProductoService {
 
-    @Autowired IProductoRepository productoRepo;
+    @Autowired
+    private IProductoRepository productoRepo;
     
     @Override
     public void crearProducto(Producto producto) {
@@ -38,7 +39,6 @@ public class ProductoService implements IProductoService {
 
     @Override
     public List<Producto> traerProdPocoStock() {
-        Producto producto = new Producto();
         List<Producto> listaProductos = new ArrayList<Producto>();
         listaProductos = productoRepo.findAll();
         
@@ -50,4 +50,5 @@ public class ProductoService implements IProductoService {
         }
         return listaProdStock;
     }
+
 }

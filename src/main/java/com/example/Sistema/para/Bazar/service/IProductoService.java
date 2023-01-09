@@ -15,4 +15,5 @@ public interface IProductoService {
     public List<Producto> traerProductos();
     
     public List<Producto> traerProdPocoStock();
+    
 }

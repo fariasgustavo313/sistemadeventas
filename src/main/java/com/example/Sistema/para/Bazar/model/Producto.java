@@ -28,6 +28,5 @@ public class Producto {
         this.costo = costo;
         this.cantidad_disponible = cantidad_disponible;
     }
-
     
 }

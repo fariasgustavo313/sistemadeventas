@@ -36,6 +36,12 @@ public class Venta {
         this.listaProductos = listaProductos;
         this.unCliente = unCliente;
     }
-
+    
+        public Venta(Long codigo_venta, LocalDate fecha_venta, List<Producto> listaProductos, Cliente unCliente) {
+        this.codigo_venta = codigo_venta;
+        this.fecha_venta = fecha_venta;
+        this.listaProductos = listaProductos;
+        this.unCliente = unCliente;
+    }
     
 }
