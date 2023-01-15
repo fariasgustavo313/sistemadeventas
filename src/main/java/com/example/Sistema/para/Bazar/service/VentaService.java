@@ -1,5 +1,6 @@
 package com.example.Sistema.para.Bazar.service;
 import com.example.Sistema.para.Bazar.model.Producto;
+import com.example.Sistema.para.Bazar.model.Stock;
 import com.example.Sistema.para.Bazar.model.Venta;
 import com.example.Sistema.para.Bazar.repository.IVentaRepository;
 import java.time.LocalDate;
@@ -15,17 +16,24 @@ public class VentaService implements IVentaService {
     private IVentaRepository ventaRepo;
     
     @Autowired
-    private IProductoService productoServ;;
+    private IProductoService productoServ;
+    
+    @Autowired
+    private IStockService stockServ;
     
     @Override
     public void crearVenta(Venta venta) {
         List<Producto> listaProdVendidos = new ArrayList<Producto>();
+        
         for(Producto prod : venta.getListaProductos()) {
             listaProdVendidos.add(productoServ.traerProducto(prod.getId_producto()));
         }
+        
         double total = 0;
+        
         for(Producto prod : listaProdVendidos) {
             total += prod.getCosto();
+            
         }
         venta.setTotal(total);
         ventaRepo.saveAndFlush(venta);
@@ -37,8 +45,13 @@ public class VentaService implements IVentaService {
     }
 
     @Override
-    public void editarVenta(Venta venta) {
-        ventaRepo.saveAndFlush(venta);
+    public void editarVenta(Long id, LocalDate fecha_edicion, double total) {
+        Venta venta = new Venta();
+        
+        venta.setFecha_venta(fecha_edicion);
+        venta.setTotal(0);
+        
+        this.crearVenta(venta);
     }
 
     @Override

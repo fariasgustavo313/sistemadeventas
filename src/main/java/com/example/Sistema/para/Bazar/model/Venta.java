@@ -17,7 +17,7 @@ public class Venta {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long codigo_venta;
+    private Long id_venta;
     private LocalDate fecha_venta;
     private double total;
     @OneToMany
@@ -29,17 +29,10 @@ public class Venta {
     public Venta() {
     }
 
-    public Venta(Long codigo_venta, LocalDate fecha_venta, double total, List<Producto> listaProductos, Cliente unCliente) {
-        this.codigo_venta = codigo_venta;
+    public Venta(Long id_venta, LocalDate fecha_venta, double total, List<Producto> listaProductos, Cliente unCliente) {
+        this.id_venta = id_venta;
         this.fecha_venta = fecha_venta;
         this.total = total;
-        this.listaProductos = listaProductos;
-        this.unCliente = unCliente;
-    }
-    
-        public Venta(Long codigo_venta, LocalDate fecha_venta, List<Producto> listaProductos, Cliente unCliente) {
-        this.codigo_venta = codigo_venta;
-        this.fecha_venta = fecha_venta;
         this.listaProductos = listaProductos;
         this.unCliente = unCliente;
     }

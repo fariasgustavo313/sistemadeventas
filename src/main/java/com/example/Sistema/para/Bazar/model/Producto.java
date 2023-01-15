@@ -26,5 +26,5 @@ public class Producto {
         this.marca = marca;
         this.costo = costo;
     }
-
+    
 }

@@ -1,6 +1,7 @@
 package com.example.Sistema.para.Bazar.service;
 import com.example.Sistema.para.Bazar.model.Stock;
 import com.example.Sistema.para.Bazar.repository.IStockRepository;
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,13 @@ public class StockService implements IStockService {
     }
 
     @Override
-    public void editarStock(Stock stock) {
-        stockRepo.saveAndFlush(stock);
+    public void editarStock(Long id, int cantidad_disponible, LocalDate fecha_edicion) {
+        Stock stock = new Stock();
+        
+        stock.setCantidad_disponible(cantidad_disponible);
+        stock.setFecha_edicion(fecha_edicion);
+        
+        this.crearStock(stock);
     }
 
     @Override

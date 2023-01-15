@@ -1,4 +1,5 @@
 package com.example.Sistema.para.Bazar.controller;
+import com.example.Sistema.para.Bazar.dto.ProductoDTO;
 import com.example.Sistema.para.Bazar.model.Producto;
 import com.example.Sistema.para.Bazar.service.IProductoService;
 import java.util.List;
@@ -33,7 +34,7 @@ public class ProductoController {
     }
     
     //Edicion de un producto
-    @PutMapping("/productos/editar")
+    @PutMapping("/productos/editar/{id}")
     public Producto editarProducto(@PathVariable Long id_producto,
             @RequestParam(required = false, name = "nombre") String nombre,
             @RequestParam(required = false, name = "marca") String marca,
@@ -57,12 +58,11 @@ public class ProductoController {
     public List<Producto> traerProductos() {
         return productoServ.traerProductos();
     }
-    /*
-    //Trae la lista de productos con stock menor a 5
-    @GetMapping("/productos/falta_stock")
-    public List<Producto> traerProdPocoStock() {
+        
+    //Trae la lista de productos con stock menor o igual al ingresado
+    @GetMapping("/productos/stockbajo{cant}")
+    public List<ProductoDTO> traerProdPocoStock(@PathVariable int cant) {
         return productoServ.traerProdPocoStock();
-    }*/
-    
+    }
     
 }

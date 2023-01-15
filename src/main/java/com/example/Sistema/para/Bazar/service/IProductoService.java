@@ -1,4 +1,5 @@
 package com.example.Sistema.para.Bazar.service;
+import com.example.Sistema.para.Bazar.dto.ProductoDTO;
 import com.example.Sistema.para.Bazar.model.Producto;
 import java.util.List;
 
@@ -14,6 +15,6 @@ public interface IProductoService {
     
     public List<Producto> traerProductos();
     
-    //public List<Producto> traerProdPocoStock();
+    public List<ProductoDTO> traerProdPocoStock();
     
 }

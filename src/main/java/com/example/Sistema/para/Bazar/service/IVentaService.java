@@ -9,7 +9,7 @@ public interface IVentaService {
     
     public void eliminarVenta(Long id);
     
-    public void editarVenta(Venta venta);
+    public void editarVenta(Long id, LocalDate fecha_venta, double total);
     
     public Venta traerVenta(Long id);
     
