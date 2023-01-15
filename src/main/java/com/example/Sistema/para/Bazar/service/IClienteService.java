@@ -8,7 +8,7 @@ public interface IClienteService {
     
     public void eliminarCliente(Long id);
     
-    public void editarCliente(Cliente cliente);
+    public void editarCliente(Long id_original, String nombre, String apellido, String dni);
     
     public Cliente traerCliente(Long id);
     

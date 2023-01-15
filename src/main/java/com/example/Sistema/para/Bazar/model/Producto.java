@@ -12,21 +12,19 @@ public class Producto {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long codigo_producto;
+    private Long id_producto;
     private String nombre;
     private String marca;
     private double costo;
-    private int cantidad_disponible;
 
     public Producto() {
     }
 
-    public Producto(Long codigo_producto, String nombre, String marca, double costo, int cantidad_disponible) {
-        this.codigo_producto = codigo_producto;
+    public Producto(Long id_producto, String nombre, String marca, double costo) {
+        this.id_producto = id_producto;
         this.nombre = nombre;
         this.marca = marca;
         this.costo = costo;
-        this.cantidad_disponible = cantidad_disponible;
     }
-    
+
 }

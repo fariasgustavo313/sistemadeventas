@@ -8,12 +8,12 @@ public interface IProductoService {
     
     public void eliminarProducto(Long id);
     
-    public void editarProducto(Producto producto);
+    public void editarProducto(Long id_producto, String nombre, String marca, double costo);
     
     public Producto traerProducto(Long id);
     
     public List<Producto> traerProductos();
     
-    public List<Producto> traerProdPocoStock();
+    //public List<Producto> traerProdPocoStock();
     
 }

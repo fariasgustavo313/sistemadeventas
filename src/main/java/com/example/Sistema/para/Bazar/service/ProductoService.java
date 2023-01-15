@@ -1,7 +1,6 @@
 package com.example.Sistema.para.Bazar.service;
 import com.example.Sistema.para.Bazar.model.Producto;
 import com.example.Sistema.para.Bazar.repository.IProductoRepository;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +22,14 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public void editarProducto(Producto producto) {
-        productoRepo.saveAndFlush(producto);
+    public void editarProducto(Long id_producto, String nombre, String marca, double costo) {
+        Producto producto = new Producto();
+        
+        producto.setNombre(nombre);
+        producto.setMarca(marca);
+        producto.setCosto(0);
+        
+        this.crearProducto(producto);
     }
 
     @Override
@@ -37,6 +42,7 @@ public class ProductoService implements IProductoService {
         return productoRepo.findAll();
     }
 
+    /*
     @Override
     public List<Producto> traerProdPocoStock() {
         List<Producto> listaProductos = new ArrayList<Producto>();
@@ -49,6 +55,6 @@ public class ProductoService implements IProductoService {
             }
         }
         return listaProdStock;
-    }
+    }*/
 
 }

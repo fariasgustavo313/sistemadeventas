@@ -21,7 +21,7 @@ public class VentaService implements IVentaService {
     public void crearVenta(Venta venta) {
         List<Producto> listaProdVendidos = new ArrayList<Producto>();
         for(Producto prod : venta.getListaProductos()) {
-            listaProdVendidos.add(productoServ.traerProducto(prod.getCodigo_producto()));
+            listaProdVendidos.add(productoServ.traerProducto(prod.getId_producto()));
         }
         double total = 0;
         for(Producto prod : listaProdVendidos) {

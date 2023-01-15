@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -32,10 +33,19 @@ public class ClienteController {
     }
     
     //Edicion de un cliente
-    @PutMapping("/clientes/editar")
-    public String editarCliente(@RequestBody Cliente cliente) {
-        clienteServ.editarCliente(cliente);
-        return "Cliente editado correctamente";
+    @PutMapping("/clientes/editar{id}")
+    public Cliente editarCliente(@PathVariable Long id_cliente,
+            @RequestParam(required = false, name = "nombre") String nombre,
+            @RequestParam(required = false, name = "apellido") String apellido,
+            @RequestParam(required = false, name = "dni") String dni) {
+        
+        //Busco al cliente y envio los datos a modificar
+        clienteServ.editarCliente(id_cliente, nombre, apellido, dni);
+        
+        //busco al cliente editado para mostrarlo en la response
+        Cliente cliente = clienteServ.traerCliente(id_cliente);
+        
+        return cliente;
     }
     
     //Trae a un solo cliente

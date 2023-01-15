@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -33,9 +34,16 @@ public class ProductoController {
     
     //Edicion de un producto
     @PutMapping("/productos/editar")
-    public String editarProducto(@RequestBody Producto producto) {
-        productoServ.crearProducto(producto);
-        return "Producto editado correctamente";
+    public Producto editarProducto(@PathVariable Long id_producto,
+            @RequestParam(required = false, name = "nombre") String nombre,
+            @RequestParam(required = false, name = "marca") String marca,
+            @RequestParam(required = false, name = "costo") double costo) {
+        
+        productoServ.editarProducto(id_producto, nombre, marca, 0);
+        
+        Producto producto = productoServ.traerProducto(id_producto);
+        
+        return producto;
     }
     
     //Traer a un producto
@@ -49,12 +57,12 @@ public class ProductoController {
     public List<Producto> traerProductos() {
         return productoServ.traerProductos();
     }
-    
+    /*
     //Trae la lista de productos con stock menor a 5
     @GetMapping("/productos/falta_stock")
     public List<Producto> traerProdPocoStock() {
         return productoServ.traerProdPocoStock();
-    }
+    }*/
     
     
 }

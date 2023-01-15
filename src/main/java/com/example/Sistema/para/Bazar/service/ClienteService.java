@@ -22,8 +22,14 @@ public class ClienteService implements IClienteService {
     }
 
     @Override
-    public void editarCliente(Cliente cliente) {
-        clienteRepo.saveAndFlush(cliente);
+    public void editarCliente(Long id_cliente, String nombre, String apellido, String dni) {
+        Cliente cliente = new Cliente();
+        
+        cliente.setNombre(nombre);
+        cliente.setApellido(apellido);
+        cliente.setDni(dni);
+        
+        this.crearCliente(cliente);
     }
 
     @Override
